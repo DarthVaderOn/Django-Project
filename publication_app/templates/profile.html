@@ -1,0 +1,16 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <link type="text/css" rel="stylesheet" href="{% static 'publication_app/style.css' %}">
+</head>
+<body>
+<nav class="nav nav-pills nav-fill">
+  <a class="nav-link active" aria-current="page" href="/">Главная</a>
+  <a class="nav-link" href="/logout">Выйти</a>
+  <a class="nav-link disabled" href="/update/{{user.id}}">Редактировать профиль</a>
+</nav>
+    <h1>Ваш профиль</h1>
+</body>
+</html>

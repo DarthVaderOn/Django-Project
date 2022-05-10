@@ -17,21 +17,13 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-from django.urls import path
-from publication_app.views import main_page
-from django.http import HttpResponse
+from django.urls import path, include
 
-def show_phones(request):
-    return HttpResponse('Привет!')
 
-def year(request):
-    return HttpResponse('2022')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', main_page, name='main_page'),
-    path('phones/', show_phones),
-    path('year/', year)
+    path('', include('publication_app.urls')),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
