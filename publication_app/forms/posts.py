@@ -7,9 +7,8 @@ class PostForm(forms.ModelForm):
         model = Post
         fields = ['title', 'text', 'is_public', 'image']
         widget = {
-            'title': forms.TextInput(attrs={'class': 'form-control'}),
-            'text': forms.TextInput(attrs={'class': 'form-control'}),
-            'is_public': forms.Textarea(attrs={'class': 'form-control'}),
+            'title': forms.TextInput(),
+            'text': forms.TextInput(),
+            'is_public': forms.Textarea(),
+            'image': forms.ImageField(),
         }
-
-

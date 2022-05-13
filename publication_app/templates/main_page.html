@@ -4,6 +4,8 @@
     <title>{{ title }}</title>
 </head>
 <body>
+    {% if user.is_authenticated %}
+    <div>С возвращением {{user.username}}, {{user.first_name}} {{user.last_name}}!</div>{% endif %}
     {% for post in posts %}
     <h3>{{ post.title}}</h3>
     {% if post.image %}<div><img src="{{ post.image.url }}" alt="" width="350px" height="350px"></div>{% endif %}

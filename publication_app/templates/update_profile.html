@@ -1,16 +1,17 @@
-<title>Редактирование профиля</title>
-
-<h1>Редактирование профиля</h1>
-
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-{% for f in form %}
-<p><label for="{{ f.id_for_label }}">{{f.label}}:</label>{{ f }}</p>
-<div>{{ f.errors }}</div>
-{% endfor %}
-
-
-    <button type="submit">Редактировать</button>
-
-
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактирование профиля</title>
+</head>
+<body>
+    <h1>Редактирование данных профиля {{ user.username }}</h1>
+        <p>Ваши данные:</p>
+        <form method="post" enctype="multipart/form-data">
+            {{ user_form.as_p }}
+            {{ profile_form.as_p }}
+            {% csrf_token %}
+            <p><input type="submit" value="Сохранить изменения"></p>
+        </form>
+</body>
+</html>
