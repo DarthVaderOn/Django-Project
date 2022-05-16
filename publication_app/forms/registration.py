@@ -1,6 +1,8 @@
 from django.contrib.auth.models import User
 from django import forms
 
+from publication_app.models import Profile
+
 
 class RegistrationForm(forms.ModelForm):
     class Meta:

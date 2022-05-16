@@ -1,31 +1,38 @@
-from django.contrib.auth import login, authenticate
-from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import View
+from django.contrib import auth
+
 from publication_app.forms.authorization import LoginForm
-from publication_app.models import Post
 
 
-class Authorization_page(View):
-    def get(self,request):
+
+class Authorization(View):
+    @staticmethod
+    def get(request):
         form = LoginForm()
         contex = {
-            'form': form,
+            'auth_form': form,
         }
         return render(request, 'authorization_page.html', contex)
 
-    def post(self,request):
+    @staticmethod
+    def post(request):
         form = LoginForm(request.POST)
+        error = False
+
         if form.is_valid():
-            cd = form.cleaned_data
-            user = authenticate(username=cd['username'], password=cd['password'])
+            user = auth.authenticate(request, **form.cleaned_data)
+
             if user is not None:
-                if user.is_active:
-                    login(request, user)
-                    return HttpResponse('Аутентификации прошла успешно!')
-            else:
-                return HttpResponse('Ошибка аутентификации!')
-            contex = {
-                'form': form,
-            }
-            return render(request, 'authorization_page.html', contex)
+                auth.login(request, user)
+
+                next_page =request.GET.get('next', '/')
+                return redirect(next_page)
+
+            error = True
+
+        contex = {
+            'auth_form': form,
+            'error': error,
+        }
+        return render(request, 'authorization_page.html', contex)

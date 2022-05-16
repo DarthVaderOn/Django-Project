@@ -5,9 +5,13 @@
     <title>Авторизация</title>
 </head>
 <body>
+    {% if error %}
+        <div>Вы ввели неверный логин или пароль. Повротите попытку.</div>
+    {% endif %}
+
     <form method="post" action="/authorization">
           {% csrf_token %}
-          {{ form.as_p }}
+          {{ auth_form }}
           <input type="submit" value="Войти">
     </form>
 </body>
