@@ -5,8 +5,9 @@
     <title>Авторизация</title>
 </head>
 <body>
+    <a href="/">Главная</a>
     {% if error %}
-        <div>Вы ввели неверный логин или пароль. Повротите попытку.</div>
+        <div>Вы ввели неверный логин или пароль. Повторите попытку!</div>
     {% endif %}
 
     <form method="post" action="/authorization">

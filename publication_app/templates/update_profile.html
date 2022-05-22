@@ -1,15 +1,17 @@
-<!DOCTYPE html>
+{% load menu_tags %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Редактирование профиля</title>
 </head>
 <body>
+    <div id="main_menu">{% main_menu %}</div>
     <h1>Редактирование данных профиля {{ user.username }}</h1>
         <p>Ваши данные:</p>
         <form method="post" enctype="multipart/form-data">
             {{ user_form.as_p }}
             {{ profile_form.as_p }}
+            {% if user.avatar %}<div><img src="{{ user.avatar.url }}" alt="" width="100px" height="100px"></div>{% endif %}
             {% csrf_token %}
             <p><input type="submit" value="Сохранить изменения"></p>
         </form>

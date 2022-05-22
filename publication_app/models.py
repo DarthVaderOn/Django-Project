@@ -9,7 +9,6 @@ class Post(models.Model):
     title = models.CharField(max_length=256, unique=False, blank=False, null=False)
     text = models.TextField(blank=False, null=False)
     is_public = models.BooleanField(default=True)
-    image = models.ImageField(null=True, blank=True)
 
 
 class Profile(models.Model):
@@ -23,3 +22,8 @@ class Profile(models.Model):
     )
     about = models.TextField(max_length=4096, blank=True, null=True)
     github_link = models.URLField(blank=True, null=True)
+
+
+class ImagePost(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    image_post = models.ImageField(null=True, blank=True)

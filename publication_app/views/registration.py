@@ -14,7 +14,7 @@ class RegistrationView(View):
         reg_form = RegistrationForm(request.POST)
         if reg_form.is_valid():
             reg_form.save()
-            return redirect('/')
+            return redirect('/authorization')
         contex = {
             'reg_form': reg_form,
         }

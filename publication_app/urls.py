@@ -1,8 +1,8 @@
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-
 from django.urls import path
+from publication_app.views.logout import LogoutUser
 from publication_app.views.registration import RegistrationView
 from publication_app.views.main import MainPageView
 from publication_app.views.authorization import Authorization
@@ -14,6 +14,7 @@ urlpatterns = [
     path('', MainPageView.as_view(), name='main_page'),
     path('registration', RegistrationView.as_view(), name='reg_page'),
     path('authorization', Authorization.as_view(), name='auth_page'),
+    path('logout', LogoutUser.as_view(), name='logout_page'),
     path('profile/', Profile_User.as_view(), name='profile_page'),
     path('profile/update/', user_redaction, name='update_profile_page'),
     path('post', PostCreate.as_view(), name='post_page'),

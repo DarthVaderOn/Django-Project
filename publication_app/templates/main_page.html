@@ -1,15 +1,26 @@
+{% load menu_tags %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>{{ title }}</title>
 </head>
 <body>
-    {% if user.is_authenticated %}
-    <div>С возвращением {{user.username}}, {{user.first_name}} {{user.last_name}}!</div>{% endif %}
+    <div id="user_menu">{% user_menu %}</div>
+        {% if user.is_authenticated %}
+        <div id="main_menu">{% main_menu %}</div>
+        <div>С возвращением {{user.first_name}} {{user.last_name}}!</div>
+        {% endif %}
     {% for post in posts %}
     <h3>{{ post.title}}</h3>
-    {% if post.image %}<div><img src="{{ post.image.url }}" alt="" width="350px" height="350px"></div>{% endif %}
-    <div>{{ post.text}}</div>
+    <hr>
+    <div>{% for image in image_post %}
+    {%if image.post == post %}
+    {% if image.image_post %}<img src="{{ image.image_post.url }}" alt="" width="350px" height="350px">{% endif %}
+    {% endif %}
+    {% endfor %}</div>
+    <div>{{ post.text }}</div>
+    <div><h5>{{ post.created_at|date:"d/m/Y  H:i"}}</h5></div>
     {% endfor %}
+    <hr>
 </body>
 </html>

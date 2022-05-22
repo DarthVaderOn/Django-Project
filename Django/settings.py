@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'publication_app',
+    'menu_app'
 ]
 # AUTH_USER_MODEL = 'publication_app.User'
 MIDDLEWARE = [
