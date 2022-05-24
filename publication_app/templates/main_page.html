@@ -14,10 +14,10 @@
     <h3>{{ post.title}}</h3>
     <hr>
     <div>{% for image in image_post %}
-    {%if image.post == post %}
-    {% if image.image_post %}<img src="{{ image.image_post.url }}" alt="" width="350px" height="350px">{% endif %}
+    {% if image.post == post %}<a href="{{image.image_post.url}}">
+    {% if image.image_post %}<img src="{{ image.image_post.url }}" target="_blank" alt="" width="350px" height="350px">{% endif %}
     {% endif %}
-    {% endfor %}</div>
+    {% endfor %}</a></div>
     <div>{{ post.text }}</div>
     <div><h5>{{ post.created_at|date:"d/m/Y  H:i"}}</h5></div>
     {% endfor %}

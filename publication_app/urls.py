@@ -2,6 +2,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.urls import path
+
+from publication_app.api.views.publications import PostsView
 from publication_app.views.logout import LogoutUser
 from publication_app.views.registration import RegistrationView
 from publication_app.views.main import MainPageView
@@ -18,6 +20,8 @@ urlpatterns = [
     path('profile/', Profile_User.as_view(), name='profile_page'),
     path('profile/update/', user_redaction, name='update_profile_page'),
     path('post', PostCreate.as_view(), name='post_page'),
+    path('api/posts', PostsView.as_view({'get': 'list', 'post': 'create'}), name='api-posts'),
+
 ]
 
 

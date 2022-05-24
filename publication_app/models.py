@@ -5,6 +5,7 @@ from django.db import models
 # Create your models here.
 
 class Post(models.Model):
+    user = models.ForeignKey(User, on_delete=models.PROTECT, related_name='posts')
     created_at = models.DateTimeField(auto_now_add=True)
     title = models.CharField(max_length=256, unique=False, blank=False, null=False)
     text = models.TextField(blank=False, null=False)

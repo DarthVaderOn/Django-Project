@@ -1,7 +1,6 @@
 from django.views import View
 from publication_app.forms.posts import AddImagePost
 from django.shortcuts import render, redirect
-
 from publication_app.models import Post, ImagePost
 
 
