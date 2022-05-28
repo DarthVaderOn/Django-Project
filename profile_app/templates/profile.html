@@ -1,0 +1,23 @@
+{% load menu_tags %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+<body>
+
+<div id="main_menu">{% main_menu %}</div>
+<a href="update">Редактировать профиль</a>
+        <h1>Ваш профиль</h1>
+            {% if avatar.avatar %}
+                <div><img src="{{ avatar.avatar.url }}" alt="" width="100px" height="100px"></div>
+            {% else %}
+                <div><img src="/media/defaultavatar.jpg" alt="" width="100px" height="100px"></div>
+            {% endif %}
+        <h2>{{ user.username }}</h2>
+        <h3>{{ user.first_name }}</h3>
+        <h3>{{ user.last_name }}</h3>
+        <h3>{{ user.email }}</h3>
+        <h3>{{ avatar.phone }}</h3>
+</body>
+</html>

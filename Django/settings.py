@@ -37,8 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'publication_app',
+    'media_app',
     'menu_app',
+    'profile_app',
+    'publication_app',
+    'tags_app',
     'drf_spectacular',
 ]
 # AUTH_USER_MODEL = 'publication_app.User'
