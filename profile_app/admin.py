@@ -7,6 +7,7 @@ from django.contrib.auth.admin import UserAdmin as UserAdminBase
 
 admin.site.unregister(User)
 
+
 class ProfileInline(admin.StackedInline):
     model = Profile
 

@@ -11,6 +11,7 @@ class RegistrationView(View):
         }
         return render(request, 'registration_page.html', contex)
 
+
     def post(self, request):
         reg_form = RegistrationForm(request.POST)
         if reg_form.is_valid():

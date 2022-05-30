@@ -1,9 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views import View
 from django.contrib import auth
-
 from profile_app.forms.authorization import LoginForm
-
 
 
 class Authorization(View):
@@ -14,6 +12,7 @@ class Authorization(View):
             'auth_form': form,
         }
         return render(request, 'authorization_page.html', contex)
+
 
     @staticmethod
     def post(request):

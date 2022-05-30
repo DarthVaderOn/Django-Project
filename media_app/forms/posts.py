@@ -12,11 +12,13 @@ class PostForm(forms.ModelForm):
             'is_public': forms.Textarea(),
         }
 
+
 class AddImagePost(PostForm):
     image = forms.ImageField(
         required=False,
-        widget=forms.FileInput(attrs={'multiple': 'multiple'})
+        widget=forms.FileInput(attrs={'multiple': True})
     )
+
 
     class Meta(PostForm.Meta):
         fields = PostForm.Meta.fields + ["image", ]

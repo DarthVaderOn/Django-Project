@@ -12,7 +12,6 @@ class Profile(models.Model):
         validators=[RegexValidator(regex=r'^\+?1?\d{9,15}$')],
         max_length=17,
         blank=True,
-        null=True,
     )
     about = models.TextField(max_length=4096, blank=True, null=True)
     github_link = models.URLField(blank=True, null=True)

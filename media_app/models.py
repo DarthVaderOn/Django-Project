@@ -12,9 +12,9 @@ class Post(models.Model):
     title = models.CharField(max_length=256, unique=False, blank=False, null=False)
     text = models.TextField(blank=False, null=False)
     is_public = models.BooleanField(default=True)
-    tag = models.ForeignKey(Tag, on_delete=models.PROTECT, null=True, verbose_name='Tags')
+    tag = models.ForeignKey(Tag, on_delete=models.PROTECT, verbose_name='Tags')
 
 
 class Media(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
-    image_post = models.ImageField(null=True, blank=True)
+    image_post = models.ImageField(null=False, blank=True)
