@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from tags_app.admin import Tags
+from tags_app.models import Tag
 
 
 # Create your models here.
@@ -12,7 +12,7 @@ class Post(models.Model):
     title = models.CharField(max_length=256, unique=False, blank=False, null=False)
     text = models.TextField(blank=False, null=False)
     is_public = models.BooleanField(default=True)
-    tag = models.ManyToManyField(Tags, blank=True)
+    tag = models.ForeignKey(Tag, on_delete=models.PROTECT, null=True, verbose_name='Tags')
 
 
 class Media(models.Model):

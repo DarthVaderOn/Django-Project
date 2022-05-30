@@ -8,10 +8,10 @@ from media_app.models import Media, Post
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title', 'created_at', 'is_public',)
+    list_display = ('id', 'title', 'user', 'tag', 'created_at', 'is_public',)
     ordering = ('-created_at', '-id',)
     readonly_fields = ('created_at',)
-    list_editable = ('is_public',)
+    list_editable = ('is_public', 'tag')
 
 
 @admin.register(Media)

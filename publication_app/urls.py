@@ -7,6 +7,7 @@ from publication_app.views.main import MainPageView
 
 urlpatterns = [
     path('', MainPageView.as_view(), name='main_page'),
+    path('tag/<int:tag_id>/', MainPageView.get_tags,),
 
 ]
 

@@ -5,7 +5,7 @@ from media_app.models import Post
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ['title', 'text', 'is_public',]
+        fields = ['title', 'text', 'is_public','tag']
         widget = {
             'title': forms.TextInput(),
             'text': forms.TextInput(),

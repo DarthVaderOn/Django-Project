@@ -3,5 +3,14 @@ from django.db import models
 # Create your models here.
 
 
-class Tags(models.Model):
-    tag = models.CharField(max_length=128, null=False, blank=False, unique=True)
+class Tag(models.Model):
+    title = models.CharField(max_length=128,db_index=True, null=False, blank=True, unique=True, verbose_name='Tag')
+
+
+    def __str__(self):
+        return self.title
+
+
+    class Meta:
+        verbose_name = 'Tag'
+        verbose_name_plural = 'Tag'
