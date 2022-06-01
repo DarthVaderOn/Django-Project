@@ -21,7 +21,7 @@
                     <h3 class="card-title {% cycle 'text-danger' 'text-success'%}">{{ post.title }}</h3>
                         <div>{% for image in image_post %}
                         {% if image.post == post %}<a href="{{image.image_post.url}}">
-                        {% if image.image_post %}<img src="{{ image.image_post.url }}" target="_blank" alt="" width="350px" height="350px">
+                        {% if image.image_post %}<img src="{{ image.image_post.url }}" target="_blank" alt="" width="800px" height="600px">
                         {% endif %}
                         {% endif %}
                         {% endfor %}</a></div>
