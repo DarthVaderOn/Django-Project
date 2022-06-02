@@ -5,7 +5,6 @@ from ..serializers.tags import TagSerializer
 from tags_app.models import Tag
 
 
-# CRUD
 class TagView(GenericViewSet, ListModelMixin, CreateModelMixin, DestroyModelMixin):
     serializer_class = TagSerializer
     queryset = Tag.objects.filter()
