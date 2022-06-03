@@ -2,7 +2,6 @@ from rest_framework import serializers
 from comments_app.models import Comments
 
 
-
 class CommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comments
