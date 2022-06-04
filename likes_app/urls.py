@@ -1,13 +1,12 @@
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-from django.urls import path
-from likes_app.api.views.likes import LikePostsView, LikeCommentsView
+from django.urls import path, include
+from likes_app.api.views.router import api_router
 
 
 urlpatterns = [
-    path('api/likes', LikePostsView.as_view({'get': 'list', 'post': 'create', 'delete': 'destroy'}), name='api-likeposts'),
-path('api/likes', LikeCommentsView.as_view({'get': 'list', 'post': 'create', 'delete': 'destroy'}), name='api-likecomments'),
+    path('api/', include(api_router.urls)),
 ]
 
 

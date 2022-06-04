@@ -5,12 +5,7 @@ from ..serializers.comments import CommentSerializer
 from comments_app.models import Comments
 
 
-class CommentsView(GenericViewSet, ListModelMixin, CreateModelMixin, DestroyModelMixin):
+class CommentsViewSet(GenericViewSet, ListModelMixin, CreateModelMixin, DestroyModelMixin):
     serializer_class = CommentSerializer
-    queryset = Comments.objects.filter()
+    queryset = Comments.objects.all()
     filter_backends = [filters.OrderingFilter]
-
-
-    def perform_destroy(self, instance):
-        instance.is_public = False
-        instance.save()

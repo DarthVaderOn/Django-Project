@@ -1,5 +1,5 @@
 from django.db import models
-from media_app.models import Post
+from publication_app.models import Post
 from profile_app.models import User
 
 

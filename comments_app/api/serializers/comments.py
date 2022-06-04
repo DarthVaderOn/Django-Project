@@ -6,8 +6,6 @@ class CommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comments
         fields = '__all__'                          # вывод всех полей
-        # exclude = ('is_public',)                  # исключения
-        # fields и exclude - должно быть одно из них, два вместе НЕ ДОПУСКАЕТСЯ !
         read_only_fields = ('user',)
 
 

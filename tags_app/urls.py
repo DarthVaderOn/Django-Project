@@ -1,12 +1,12 @@
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-from django.urls import path
-from tags_app.api.views.tags import TagView
+from django.urls import path, include
+from tags_app.api.views.router import api_router
 
 
 urlpatterns = [
-    path('api/tag', TagView.as_view({'get': 'list', 'post': 'create', 'delete': 'destroy'}), name='api-tags'),
+    path('api/', include(api_router.urls)),
 ]
 
 

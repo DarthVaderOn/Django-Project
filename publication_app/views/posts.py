@@ -1,7 +1,7 @@
 from django.views import View
-from media_app.forms.posts import AddImagePost
+from publication_app.forms.posts import AddImagePost
 from django.shortcuts import render, redirect
-from media_app.models import Media
+from publication_app.models import Media
 
 
 class PostCreate(View):

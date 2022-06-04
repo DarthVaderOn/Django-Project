@@ -11,18 +11,28 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('publication_app', '0001_initial'),
+        ('tags_app', '0001_initial'),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Comments',
+            name='Post',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
+                ('title', models.CharField(max_length=256)),
                 ('text', models.TextField()),
+                ('is_public', models.BooleanField(default=True)),
+                ('tag', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='tags_app.tag', verbose_name='Tags')),
+                ('user', models.ForeignKey(null=True, on_delete=django.db.models.deletion.PROTECT, related_name='posts', to=settings.AUTH_USER_MODEL)),
+            ],
+        ),
+        migrations.CreateModel(
+            name='Media',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('image_post', models.ImageField(blank=True, upload_to='')),
                 ('post', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='publication_app.post')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
         ),
     ]

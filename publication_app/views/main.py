@@ -1,8 +1,8 @@
 from django.db.models import Count
 from django.shortcuts import render
 from django.views import View
-from media_app.models import Media
-from media_app.models import Post
+from publication_app.models import Media
+from publication_app.models import Post
 from tags_app.models import Tag
 
 

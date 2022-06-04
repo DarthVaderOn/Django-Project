@@ -1,14 +1,12 @@
+from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-from django.urls import path
-from media_app.api.views.publications import PostsView
-from media_app.views.posts import PostCreate
+from media_app.api.views.router import api_router
 
 
 urlpatterns = [
-    path('post', PostCreate.as_view(), name='post_page'),
-    path('api/posts', PostsView.as_view({'get': 'list', 'post': 'create', 'delete': 'destroy'}), name='api-posts'),
+    path('api/', include(api_router.urls)),
 ]
 
 

@@ -1,5 +1,5 @@
 from django import forms
-from media_app.models import Post
+from publication_app.models import Post
 
 
 class PostForm(forms.ModelForm):

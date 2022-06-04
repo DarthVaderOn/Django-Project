@@ -6,8 +6,6 @@ class LikePostSerializer(serializers.ModelSerializer):
     class Meta:
         model = LikePost
         fields = '__all__'                          # вывод всех полей
-        # exclude = ('is_public',)                  # исключения
-        # fields и exclude - должно быть одно из них, два вместе НЕ ДОПУСКАЕТСЯ !
         read_only_fields = ('user',)
 
 
@@ -20,9 +18,7 @@ class LikePostSerializer(serializers.ModelSerializer):
 class LikeCommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = LikeComment
-        fields = '__all__'                          # вывод всех полей
-        # exclude = ('is_public',)                  # исключения
-        # fields и exclude - должно быть одно из них, два вместе НЕ ДОПУСКАЕТСЯ !
+        fields = '__all__'
         read_only_fields = ('user',)
 
 
