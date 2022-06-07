@@ -5,7 +5,7 @@ from django.db import models
 
 
 class Tag(models.Model):
-    title = models.CharField(max_length=128,db_index=True, null=False, blank=True, unique=True, verbose_name='Tag')
+    title = models.CharField(max_length=64, null=True, blank=True, unique=True, verbose_name='Tag')
 
 
     def __str__(self):
@@ -15,3 +15,5 @@ class Tag(models.Model):
     class Meta:
         verbose_name = 'Tag'
         verbose_name_plural = 'Tag'
+
+

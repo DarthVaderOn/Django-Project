@@ -9,8 +9,9 @@ from publication_app.models import Post
 class PostsViewSet(GenericViewSet, ListModelMixin, CreateModelMixin, DestroyModelMixin):
     serializer_class = PostSerializer
     queryset = Post.objects.filter(is_public=True)
-    filter_backends = [filters.OrderingFilter]
+    filter_backends = [filters.OrderingFilter, filters.SearchFilter]
     ordering_field = ['created_at', 'id']
+    search_fields = ['=id', 'title', 'text', 'user__username']
 
 
     def perform_destroy(self, instance):

@@ -8,10 +8,16 @@ from profile_app.models import User
 
 
 class LikePost(models.Model):
-    like_post = models.ForeignKey(Post, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, null=False, blank=False, related_name='likes')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank=False, related_name='likes')
+
+    class Meta:
+        unique_together = (('post', 'user'),)
 
 
 class LikeComment(models.Model):
-    like_comment = models.ForeignKey(Comments, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    post_comment = models.ForeignKey(Comments, on_delete=models.CASCADE, null=False, blank=False, related_name='likes_comment')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank=False, related_name='likes_comment')
+
+    class Meta:
+        unique_together = (('post_comment', 'user'),)
