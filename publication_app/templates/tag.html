@@ -8,7 +8,7 @@
 <h3>Облако тэгов:</h3>
     <div class="row">
     {% for item in tag %}
-    <a href="/tag/{{ item.pk }}" class="list-group-item list-group-item-action">{{ item.title }}</a>
+    <a href="/tag/{{ item.pk }}" class="list-group-item list-group-item-action">{{ item.title }}<span class="badge badge-primary badge-pill"> [{{ item.count }}]</span></a>
     {% endfor %}</div>
         <div id="user_menu">{% user_menu %}</div>
             {% if user.is_authenticated %}
@@ -16,7 +16,7 @@
                 <div>С возвращением {{user.first_name}} {{user.last_name}}!</div>
                 {% endif %}
                 {% for post in posts %}
-                <h5 >tag: {{ post.tag }}</h5>
+                <h4 >tag: <a href="{% url 'get_tags' post.tag.pk %}">{{ post.tag }}</a></h4>
                     <div class="card-body">
                     <h3 class="card-title {% cycle 'text-danger' 'text-success'%}">{{ post.title }}</h3>
                         <div>{% for image in image_post %}

@@ -9,7 +9,7 @@ class PostForm(forms.ModelForm):
         widget = {
             'title': forms.TextInput(),
             'text': forms.TextInput(),
-            'is_public': forms.Textarea(),
+            'is_public': forms.BooleanField(initial=True),
         }
 
 
