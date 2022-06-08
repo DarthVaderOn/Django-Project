@@ -1,36 +1,8 @@
-{% load menu_tags %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ title }}</title>
-</head>
-<body>
-<h3>Облако тэгов:</h3>
-    <div class="row">
-    {% for item in tag %}
-    <a href="/tag/{{ item.pk }}" class="list-group-item list-group-item-action">{{ item.title }}<span class="badge badge-primary badge-pill"> [{{ item.count }}]</span></a>
-    {% endfor %}</div>
-        <div id="user_menu">{% user_menu %}</div>
-            {% if user.is_authenticated %}
-            <div id="main_menu">{% main_menu %}</div>
-                <div>С возвращением {{user.first_name}} {{user.last_name}}!</div>
-                {% endif %}
-                {% for post in posts %}
-                <h4 >tag: <a href="{% url 'get_tags' post.tag.pk %}">{{ post.tag }}</a></h4>
-                    <div class="card-body">
-                    <h3 class="card-title {% cycle 'text-danger' 'text-success'%}">{{ post.title }}</h3>
-                        <div>{% for image in image_post %}
-                        {% if image.post == post %}<a href="{{image.image_post.url}}">
-                        {% if image.image_post %}<img src="{{ image.image_post.url }}" target="_blank" alt="" width="800px" height="600px">
-                        {% endif %}
-                        {% endif %}
-                        {% endfor %}</a></div>
-                    </div>
-                <p class="card-text">{{ post.text }}</p>
-                <div class="card-footer text-muted">{{ post.created_at|date:"d/m/Y  H:i"}}</div>
-            <hr>
-        {% empty %}
-        <h3> Ooops... We don't have posts ... 0_o </h3>
-        {% endfor %}
-</body>
-</html>
+{% extends 'base.html' %}
+
+
+{% block title %}
+Hello World!
+
+
+{% endblock %}

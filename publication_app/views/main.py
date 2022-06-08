@@ -11,7 +11,7 @@ class MainPageView(View):
         posts = Post.objects.filter(is_public=True).order_by('-created_at', '-id').all()
         tag = Tag.objects.annotate(count=Count("post")).order_by("-count")[:5]
         image_post = Media.objects.all()
-        contex = {'title': 'Hello World',
+        contex = {'title': 'Hello World!',
                   'posts': posts,
                   'image_post': image_post,
                   'tag': tag
