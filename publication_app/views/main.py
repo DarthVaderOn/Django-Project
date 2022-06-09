@@ -25,7 +25,7 @@ class MainPageView(View):
         image_post = Media.objects.all()
         tags = Tag.objects.get(pk=tag_id)
         return render(request, 'tag.html', {
-            'title': 'Category',
+            'title': 'Categories',
             'posts': posts,
             'image_post': image_post,
             'tag': tag,
