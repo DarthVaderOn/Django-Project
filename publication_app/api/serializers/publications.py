@@ -5,8 +5,6 @@ from tags_app.api.serializers.tags import TagSerializer
 
 
 class PostSerializer(serializers.ModelSerializer):
-
-
     class Meta:
         model = Post
         exclude = ['is_public']
@@ -26,10 +24,13 @@ class PostSerializer(serializers.ModelSerializer):
     )
 
 
+    # media = serializers.URLField(source='file.file.url', read_only=True)
     media = MediaFileSerializer(source='file', allow_null=False, read_only=True)
+    # media_uploaded_at = serializers.DateTimeField(source='file.uploaded_at', allow_null=True, read_only=True)
     tag = TagSerializer(read_only=True)
     likes_count = serializers.SerializerMethodField()
     comments_count = serializers.SerializerMethodField()
+    likes_comment_count = serializers.SerializerMethodField()
 
 
     def get_likes_count(self, instance) -> int:
@@ -38,3 +39,7 @@ class PostSerializer(serializers.ModelSerializer):
 
     def get_comments_count(self, instance) -> int:
         return instance.comments.count()
+
+
+    def get_likes_comment_count(self, instance) -> int:
+        return instance.likes_comment.count()

@@ -24,10 +24,12 @@ from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView, Sp
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('comments_app.urls')),
+    path('', include('friendship_app.urls')),
     path('', include('likes_app.urls')),
     path('', include('media_app.urls')),
-    path('', include('publication_app.urls')),
+    path('', include('messenger_app.urls')),
     path('', include('profile_app.urls')),
+    path('', include('publication_app.urls')),
     path('', include('tags_app.urls')),
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
     path('api/schema/swagger-ui/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),

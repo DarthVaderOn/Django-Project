@@ -13,3 +13,10 @@ class CommentSerializer(serializers.ModelSerializer):
         default=serializers.CurrentUserDefault(),
         source='user'
     )
+
+
+    likes_comment_count = serializers.SerializerMethodField()
+
+
+    def get_likes_comment_count(self, instance) -> int:
+        return instance.likes_comment.count()

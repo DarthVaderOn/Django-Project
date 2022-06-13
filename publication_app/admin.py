@@ -32,4 +32,4 @@ class PostAdmin(admin.ModelAdmin):
     ordering = ('-created_at', '-id',)
     readonly_fields = ('created_at',)
     list_editable = ('is_public', 'tag', 'user',)
-    search_fields = ('title', 'text')
+    search_fields = ('title', 'text', 'user__username')

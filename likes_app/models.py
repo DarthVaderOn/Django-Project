@@ -16,8 +16,9 @@ class LikePost(models.Model):
 
 
 class LikeComment(models.Model):
-    post_comment = models.ForeignKey(Comments, on_delete=models.CASCADE, null=False, blank=False, related_name='likes_comment')
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, null=False, blank=False, related_name='likes_comment')
+    comment = models.ForeignKey(Comments, on_delete=models.CASCADE, null=False, blank=False, related_name='likes_comment')
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank=False, related_name='likes_comment')
 
     class Meta:
-        unique_together = (('post_comment', 'user'),)
+        unique_together = (('post', 'comment', 'user'),)
