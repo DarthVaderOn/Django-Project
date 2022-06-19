@@ -5,7 +5,7 @@
     <title>{% block title %}Welcome!{% endblock %}</title>
 </head>
 <body>
-<h3>Облако тэгов:</h3>
+<h3>Most Wanted Tags:</h3>
     <div class="row">
     {% for item in tag %}
     <a href="/tag/{{ item.pk }}" class="list-group-item list-group-item-action">{{ item.title }}<span class="badge badge-primary badge-pill"> [{{ item.count }}]</span></a>
@@ -13,7 +13,7 @@
         <div id="user_menu">{% user_menu %}</div>
             {% if user.is_authenticated %}
             <div id="main_menu">{% main_menu %}</div>
-                <div>С возвращением {{user.first_name}} {{user.last_name}}!</div>
+                <div>Welcome {{user.first_name}} {{user.last_name}}!</div>
                 {% endif %}
                 {% for post in posts %}
                 <h4 >tag: <a href="{% url 'get_tags' post.tag.pk %}">{{ post.tag }}</a></h4>
@@ -30,7 +30,7 @@
                 <div class="card-footer text-muted">{{ post.created_at|date:"d/m/Y  H:i"}}</div>
             <hr>
         {% empty %}
-        <h3> Ooops... We don't have posts ... 0_o </h3>
+        <h3> "It's time to make your news feed more colorful, subscribe to users ! </h3>
         {% endfor %}
 </body>
 </html>

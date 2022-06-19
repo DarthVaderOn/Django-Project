@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <title>Регистрация</title>
+    <title>Registration</title>
 </head>
 <body>
-    <a href="/">Главная</a>
+    <a href="/">Main page</a>
     <form method="post" action="/registration">
           {% csrf_token %}
           {{ reg_form }}
-          <input type="submit" value="Зарегистрироваться">
+          <input type="submit" value="Sign up">
     </form>
 </body>
 </html>

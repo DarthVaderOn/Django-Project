@@ -13,13 +13,12 @@ class FriendshipRequest(models.Model):
 
 
     def __str__(self):
-        return f"User #{self.user_id} friendship requested #{self.user_invite_id}"
+        return f"User #{self.user_id} and user #{self.user_invite_id} friendship requested: {self.friendship_result}"
 
 
 class FollowRequest(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE, related_name='follow_request')
     user_follow = models.ForeignKey(User,on_delete=models.CASCADE, related_name='follow')
-    follow_result = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
 
 

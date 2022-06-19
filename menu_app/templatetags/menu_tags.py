@@ -20,19 +20,19 @@ def user_menu(context):
                 'url': '/profile',
             },
             {
-                'title': 'Выйти',
+                'title': 'Logout',
                 'url': '/logout',
             },
         ]
     else:
         menu = [
             {
-                'title': 'Войти',
+                'title': 'Authorization',
                 'url': '/authorization',
 
             },
             {
-                'title': 'Регистрация',
+                'title': 'Registration',
                 'url': '/registration'
             },
         ]

@@ -1,6 +1,7 @@
 from django.shortcuts import redirect, render
 from django.views import View
 from profile_app.forms.registration import RegistrationForm
+from publication_app.tasks import send_email_task
 
 
 class RegistrationView(View):
@@ -16,6 +17,7 @@ class RegistrationView(View):
     def post(self, request):
         reg_form = RegistrationForm(request.POST)
         if reg_form.is_valid():
+            send_email_task()
             reg_form.save()
             return redirect('/authorization')
         contex = {

@@ -2,18 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <title>Авторизация</title>
+    <title>Authorization</title>
 </head>
 <body>
-    <a href="/">Главная</a>
+    <a href="/">Main Page</a>
     {% if error %}
-        <div>Вы ввели неверный логин или пароль. Повторите попытку!</div>
+        <div>You have entered an incorrect username or password. Try again!</div>
     {% endif %}
 
     <form method="post" action="/authorization">
           {% csrf_token %}
           {{ auth_form }}
-          <input type="submit" value="Войти">
+          <input type="submit" value="Sign in">
     </form>
 </body>
 </html>

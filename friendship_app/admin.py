@@ -15,6 +15,5 @@ class FriendshipAdmin(admin.ModelAdmin):
 
 @admin.register(FollowRequest)
 class FollowAdmin(admin.ModelAdmin):
-    list_display = ('user', 'user_follow', 'follow_result', 'created_at')
-    list_editable = ('follow_result',)
+    list_display = ('user', 'user_follow', 'created_at')
     search_fields = ('user__username', 'user_follow__username')
