@@ -3,6 +3,7 @@ from django import forms
 
 
 class RegistrationForm(forms.ModelForm):
+    email = forms.EmailInput()
     class Meta:
         model = User
         fields = ('username', 'email', 'password',)

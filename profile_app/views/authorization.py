@@ -7,6 +7,10 @@ from profile_app.forms.authorization import LoginForm
 class Authorization(View):
     @staticmethod
     def get(request):
+
+        if request.user.is_authenticated:
+            return redirect('main_page')
+
         form = LoginForm()
         contex = {
             'auth_form': form,

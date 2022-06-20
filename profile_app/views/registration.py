@@ -1,11 +1,15 @@
 from django.shortcuts import redirect, render
 from django.views import View
 from profile_app.forms.registration import RegistrationForm
-from publication_app.tasks import send_email_task
+from profile_app.tasks import send_email_task
 
 
 class RegistrationView(View):
     def get(self, request):
+
+        if request.user.is_authenticated:
+            return redirect('main_page')
+
         reg_form = RegistrationForm()
         contex = {
             'title': 'Registration',
