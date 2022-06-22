@@ -3,8 +3,10 @@ from django import forms
 
 
 class RegistrationForm(forms.ModelForm):
+
     email = forms.EmailInput()
-    password = forms.CharField(widget=forms.PasswordInput)
+    password = forms.CharField(widget=forms.PasswordInput())
+
     class Meta:
         model = User
         fields = ('username', 'email', 'password',)
