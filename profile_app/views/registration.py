@@ -5,11 +5,8 @@ from profile_app.tasks import send_email_task
 
 
 class RegistrationView(View):
+
     def get(self, request):
-
-        if request.user.is_authenticated:
-            return redirect('main_page')
-
         reg_form = RegistrationForm()
         contex = {
             'title': 'Registration',

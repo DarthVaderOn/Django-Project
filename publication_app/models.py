@@ -14,7 +14,7 @@ class Post(models.Model):
     text = models.TextField(blank=False, null=False)
     is_public = models.BooleanField(default=True)
     tag = models.ForeignKey(Tag, on_delete=models.PROTECT, verbose_name='Tags')
-    file = models.ForeignKey(MediaFile, on_delete=models.SET_NUll, null=True, blank=True)
+    file = models.ForeignKey(MediaFile, on_delete=models.SET_NULL, null=True, blank=True)
 
 
 class Media(models.Model):

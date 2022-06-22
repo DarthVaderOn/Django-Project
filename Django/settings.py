@@ -23,6 +23,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # Load dotenv
+
+
 load_dotenv()
 env_path = Path('.') / '.env'
 load_dotenv(dotenv_path=env_path)
@@ -31,6 +33,8 @@ load_dotenv(dotenv_path=env_path)
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 # SECURITY WARNING: keep the secret key used in production secret!
+
+
 SECRET_KEY = str(os.getenv('SECRET_KEY'))
 
 
@@ -41,7 +45,15 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+# Standard URL Login Required
+
+
+LOGIN_URL = '/authorization'
+LOGIN_REDIRECT_URL = '/authorization'
+
+
 # Application definition
+
 
 INSTALLED_APPS = [
     'admin_interface',
@@ -183,9 +195,9 @@ CELERY_RESULT_BACKEND = 'django-db'
 CELERY_CACHE_BACKEND = 'django-cache'
 
 
-EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_HOST = str(os.getenv('EMAIL_HOST'))
 EMAIL_PORT = 465
-EMAIL_HOST_USER = str(os.getenv('EMAIL_HOST_USER'))      # Enter your email address
+EMAIL_HOST_USER = str(os.getenv('EMAIL_HOST_USER'))           # Enter your email address
 EMAIL_HOST_PASSWORD = str(os.getenv('EMAIL_HOST_PASSWORD'))   # Enter your email password
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True

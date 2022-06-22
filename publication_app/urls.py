@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.auth.decorators import login_required
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.urls import path, include
 from publication_app.api.views.router import api_router
@@ -8,9 +9,9 @@ from publication_app.views.posts import PostCreate
 
 
 urlpatterns = [
-    path('', MainPageView.as_view(), name='main_page'),
-    path('tag/<int:tag_id>/', MainPageView.get_tags, name='get_tags'),
-    path('post', PostCreate.as_view(), name='post_page'),
+    path('', login_required(MainPageView.as_view()), name='main_page'),
+    path('tag/<int:tag_id>/', login_required(MainPageView.get_tags), name='get_tags'),
+    path('post', login_required(PostCreate.as_view()), name='post_page'),
     path('api/', include(api_router.urls)),
 ]
 

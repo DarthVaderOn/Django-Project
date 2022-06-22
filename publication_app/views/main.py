@@ -8,6 +8,7 @@ from tags_app.models import Tag
 
 
 class MainPageView(View):
+
     def get(self, request):
         subscriber = FollowRequest.objects.filter(user=request.user.pk)
 
@@ -36,6 +37,7 @@ class MainPageView(View):
 
 
     def get_tags(request, tag_id):
+
         subscriber = FollowRequest.objects.filter(user=request.user.pk)
 
         users_follow = []

@@ -1,4 +1,5 @@
 from django import template
+from django.urls import reverse
 from menu_app.models import Menu
 
 
@@ -21,19 +22,19 @@ def user_menu(context):
             },
             {
                 'title': 'Logout',
-                'url': '/logout',
+                'url': reverse('logout_page'),
             },
         ]
     else:
         menu = [
             {
                 'title': 'Authorization',
-                'url': '/authorization',
+                'url': reverse('auth_page'),
 
             },
             {
                 'title': 'Registration',
-                'url': '/registration'
+                'url': reverse('reg_page'),
             },
         ]
     return {'menu': menu}

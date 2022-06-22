@@ -4,6 +4,7 @@ from profile_app.models import Profile
 
 
 def user_redaction(request):
+
     if request.method == 'POST':
         user_form = UpdateProfileForm(instance=request.user, data=request.POST)
         profile_form = UpdateProForm(instance=request.user.profile, data=request.POST, files=request.FILES)
