@@ -42,7 +42,7 @@ SECRET_KEY = str(os.getenv('SECRET_KEY'))
 
 
 DEBUG = True
-ALLOWED_HOSTS = ["django-project-darthvaderon.herokuapp.com", "localhost"]
+ALLOWED_HOSTS = []
 
 
 # Standard URL Login Required
@@ -83,7 +83,6 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhitenoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',

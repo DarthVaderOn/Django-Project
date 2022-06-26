@@ -5,11 +5,13 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.urls import path, include
 from publication_app.api.views.router import api_router
 from publication_app.views.main import MainPageView
+from publication_app.views.my_post import MyPosts
 from publication_app.views.posts import PostCreate
 
 
 urlpatterns = [
     path('', login_required(MainPageView.as_view()), name='main_page'),
+    path('myposts', login_required(MyPosts.as_view()), name='my_post'),
     path('tag/<int:tag_id>/', login_required(MainPageView.get_tags), name='get_tags'),
     path('post', login_required(PostCreate.as_view()), name='post_page'),
     path('api/', include(api_router.urls)),
