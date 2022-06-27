@@ -6,9 +6,7 @@ django-admin-interface==0.19.1
 celery==5.2.7
 django-celery-results==2.2.0
 django-redis==5.2.0
-django-dotenv==1.4.2
 python-dotenv==0.20.0
 portalocker==2.4.0
 waitress==2.1.2
-whitenoise==6.2.0
 redis
