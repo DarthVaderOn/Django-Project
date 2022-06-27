@@ -1,9 +1,7 @@
 import os
-from pathlib import Path
 from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 from django.views import View
-from dotenv import load_dotenv
 from profile_app.forms.registration import RegistrationForm
 from profile_app.tasks import send_email_task
 from django.contrib.auth import login
@@ -20,11 +18,6 @@ class RegistrationView(View):
         return render(request, 'registration_page.html', contex)
 
 
-    load_dotenv()
-    env_path = Path('.') / '.env'
-    load_dotenv(dotenv_path=env_path)
-
-
     def post(self, request):
         reg_form = RegistrationForm(request.POST)
         if reg_form.is_valid():
@@ -35,9 +28,6 @@ class RegistrationView(View):
                 'This is proof the task worked!',
                 str(os.getenv('EMAIL_HOST_USER')),        # Enter your email address
                 [user.email])                             # Enter them email address
-            user.is_active = True
-            user.save()
-            user.backend = 'django.contrib.auth.backends.ModelBackend'
             login(request, user)
             return redirect('/')
         contex = {

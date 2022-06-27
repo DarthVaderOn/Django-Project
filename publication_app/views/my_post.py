@@ -39,7 +39,7 @@ class MyPosts(View):
         return render(request, 'my_posts.html', contex)
 
 
-    def get_tags(request, tag_id):
+    def get_tags(self, request, tag_id):
 
         posts = Post.objects.filter(is_public=True).all()
         tag = Tag.objects.annotate(count=Count("post")).order_by("-count")[:5]
