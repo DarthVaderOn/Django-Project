@@ -1,1 +1,1 @@
-web: waitress-serve --port=$PORT website:app
+web: python manage.py runserver 0.0.0.0:5000
