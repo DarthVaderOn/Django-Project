@@ -19,7 +19,7 @@ class LikeCommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = LikeComment
         fields = '__all__'
-        read_only_fields = ['user',]
+        read_only_fields = ['user', 'comments']
 
 
     publisher_user = serializers.HiddenField(
