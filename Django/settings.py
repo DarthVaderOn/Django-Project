@@ -14,6 +14,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 import os
 from pathlib import Path
 from dotenv import load_dotenv
+import django_heroku
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -121,6 +122,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+        'CONN_MAX_AGE': 500,
     }
 }
 
@@ -201,3 +203,6 @@ EMAIL_HOST_USER = str(os.getenv('EMAIL_HOST_USER'))           # Enter your email
 EMAIL_HOST_PASSWORD = str(os.getenv('EMAIL_HOST_PASSWORD'))   # Enter your email password
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
+
+
+django_heroku.settings(locals())

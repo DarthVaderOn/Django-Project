@@ -61,6 +61,6 @@ class MainPageView(View):
                     'tags': tags,
                 })
         else:
-            contex = {'title': 'Hello World!',
+            contex = {'title': 'Categories',
                       }
         return render(request, 'main_page.html', contex)
