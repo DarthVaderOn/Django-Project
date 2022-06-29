@@ -4,6 +4,7 @@ from django.views import View
 
 
 class LogoutUser(View):
+    """Класс выхода с профиля"""
 
     def get(self, request):
         logout(request)

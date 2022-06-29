@@ -8,6 +8,7 @@ from tags_app.models import Tag
 
 
 class Post(models.Model):
+    """Модель постов"""
     user = models.ForeignKey(User, on_delete=models.PROTECT, related_name='posts', null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     title = models.CharField(max_length=256, unique=False, blank=False, null=False)
@@ -18,5 +19,6 @@ class Post(models.Model):
 
 
 class Media(models.Model):
+    """Модель изображений в постах"""
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     image_post = models.ImageField(null=False, blank=True)

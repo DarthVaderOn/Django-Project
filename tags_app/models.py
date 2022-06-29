@@ -5,6 +5,7 @@ from django.db import models
 
 
 class Tag(models.Model):
+    """Модель тегов"""
     title = models.CharField(max_length=64, null=True, blank=True, unique=True, verbose_name='Tag')
 
 

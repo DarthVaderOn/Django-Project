@@ -8,8 +8,10 @@ from tags_app.models import Tag
 
 
 class MyPosts(View):
+    """Класс представление ваших записей"""
 
     def get(self, request):
+        """Представление постов"""
 
         user_id = User.objects.filter(profile=request.user.profile.pk)
 
@@ -40,6 +42,7 @@ class MyPosts(View):
 
 
     def get_tags(self, request, tag_id):
+        """Представление тегов"""
 
         posts = Post.objects.filter(is_public=True).all()
         tag = Tag.objects.annotate(count=Count("post")).order_by("-count")[:5]

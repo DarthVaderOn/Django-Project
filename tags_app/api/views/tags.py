@@ -6,6 +6,8 @@ from tags_app.models import Tag
 
 
 class TagViewSet(GenericViewSet, ListModelMixin, RetrieveModelMixin):
+    """Создаём класс вьюсет тегов"""
     serializer_class = TagSerializer
     queryset = Tag.objects.all()
     filter_backends = [filters.OrderingFilter]
+    ordering_fields = '__all__'

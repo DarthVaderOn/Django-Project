@@ -5,9 +5,11 @@ from profile_app.forms.authorization import LoginForm
 
 
 class Authorization(View):
+    """Класс авторизации пользователя"""
 
     @staticmethod
     def get(request):
+        """Представление формы"""
 
         form = LoginForm()
         contex = {
@@ -18,6 +20,7 @@ class Authorization(View):
 
     @staticmethod
     def post(request):
+        """Сохранение формы"""
 
         form = LoginForm(request.POST)
         error = False

@@ -8,17 +8,21 @@ from profile_app.models import User
 
 
 class LikePost(models.Model):
+    """Модель лайков постов"""
     post = models.ForeignKey(Post, on_delete=models.CASCADE, null=False, blank=False, related_name='likes')
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank=False, related_name='likes')
 
     class Meta:
+        """Создаём уникальные поля"""
         unique_together = (('post', 'user'),)
 
 
 class LikeComment(models.Model):
+    """Модель лайков комментариев"""
     post = models.ForeignKey(Post, on_delete=models.CASCADE, null=False, blank=False, related_name='likes_comment')
     comment = models.ForeignKey(Comments, on_delete=models.CASCADE, null=False, blank=False, related_name='likes_comment')
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank=False, related_name='likes_comment')
 
     class Meta:
+        """Создаём уникальные поля"""
         unique_together = (('post', 'comment', 'user'),)

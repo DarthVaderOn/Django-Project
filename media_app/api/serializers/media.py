@@ -3,6 +3,7 @@ from media_app.models import MediaFile
 
 
 class MediaFileSerializer(serializers.ModelSerializer):
+    """Создаем класс сериалайзер медиафайлов"""
     class Meta:
         model = MediaFile
         fields = '__all__'

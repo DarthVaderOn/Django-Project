@@ -7,12 +7,14 @@ from publication_app.models import Media, Post
 
 
 class MenuItemAdmin(admin.StackedInline):
+    """Вывод изображений постов в админке"""
     model = Media
     list_display = ('image_post','preview')
     readonly_fields = ('image_post','preview')
 
 
     def preview(self, obj):
+        """Превью при нажатии на картинку"""
         if obj.image_post:
             return mark_safe(
                 f'<a target=_blank href={obj.image_post.url}>'
@@ -25,6 +27,7 @@ class MenuItemAdmin(admin.StackedInline):
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
+    """Вывод поста с изображениями"""
     inlines = (
         MenuItemAdmin,
     )

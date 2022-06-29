@@ -8,6 +8,7 @@ from messenger_app.models import Messenger
 
 @admin.register(Messenger)
 class MessengerAdmin(admin.ModelAdmin):
+    """Вывод полей чата в админке"""
     list_display = ('id', 'sender', 'recipient', 'created_at', 'text', 'preview',)
     ordering = ('-created_at', '-id',)
     readonly_fields = ('created_at', 'preview')
@@ -15,6 +16,7 @@ class MessengerAdmin(admin.ModelAdmin):
 
 
     def preview(self, obj):
+        """Превью картинок в чате админки"""
         if obj.file:
             return mark_safe(
                 f'<a target=_blank href={obj.file.file.url}>'

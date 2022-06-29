@@ -4,6 +4,7 @@ from messenger_app.models import Messenger
 
 
 class MessengerSerializer(serializers.ModelSerializer):
+    """Создаем класс сериалайзер чата"""
     class Meta:
         model = Messenger
         exclude = ['id']

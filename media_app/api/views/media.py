@@ -5,5 +5,6 @@ from media_app.models import MediaFile
 
 
 class MediaFileViewSet(GenericViewSet, CreateModelMixin, RetrieveModelMixin):
+    """Создаём класс вьюсет медиафайлов"""
     serializer_class = MediaFileSerializer
     queryset = MediaFile.objects.all()

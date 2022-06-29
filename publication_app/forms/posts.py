@@ -3,6 +3,7 @@ from publication_app.models import Post
 
 
 class PostForm(forms.ModelForm):
+    """Класс формы постов"""
     class Meta:
         model = Post
         fields = ['title', 'text', 'is_public','tag']
@@ -14,6 +15,7 @@ class PostForm(forms.ModelForm):
 
 
 class AddImagePost(PostForm):
+    """Класс формы изображений к постам"""
     image = forms.ImageField(
         required=False,
         widget=forms.FileInput(attrs={'multiple': True})

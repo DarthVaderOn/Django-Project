@@ -6,6 +6,7 @@ from tags_app.models import Tag
 
 @admin.register(Tag)
 class Tag(admin.ModelAdmin):
+    """Вывод полей тегов в админке"""
     list_display = ('id', 'title',)
     ordering = ('id', 'title',)
     list_display_links = ('id', 'title',)

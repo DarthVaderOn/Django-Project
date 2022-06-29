@@ -8,8 +8,11 @@ from tags_app.models import Tag
 
 
 class MainPageView(View):
+    """Класс представление главной страницы"""
 
     def get(self, request):
+        """Представление постов"""
+
         subscriber = FollowRequest.objects.filter(user=request.user.pk)
 
         users_follow = []
@@ -37,6 +40,7 @@ class MainPageView(View):
 
 
     def get_tags(request, tag_id):
+        """Представление тегов"""
 
         subscriber = FollowRequest.objects.filter(user=request.user.pk)
 

@@ -8,6 +8,7 @@ from media_app.models import MediaFile
 
 @admin.register(MediaFile)
 class MessengerAdmin(admin.ModelAdmin):
+    """Вывод полей медиафайлов в админке"""
     list_display = ('id', 'user', 'file', 'uploaded_at', 'preview')
     ordering = ('-id',)
     readonly_fields = ('preview', 'file', 'uploaded_at')
@@ -15,6 +16,7 @@ class MessengerAdmin(admin.ModelAdmin):
 
 
     def preview(self, obj):
+        """Превью при нажатии на картинку"""
         if obj.file:
             return mark_safe(
                 f'<a target=_blank href={obj.file.url}>'

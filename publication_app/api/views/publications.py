@@ -7,11 +7,12 @@ from publication_app.models import Post
 
 # CRUD
 class PostsViewSet(GenericViewSet, ListModelMixin, CreateModelMixin, DestroyModelMixin):
+    """Создаём класс вьюсет постов"""
     serializer_class = PostSerializer
     queryset = Post.objects.filter(is_public=True)
     filter_backends = [filters.OrderingFilter, filters.SearchFilter]
     ordering_field = ['created_at', 'id']
-    search_fields = ['=id', 'title', 'text', 'user__username']
+    search_fields = ['=id', 'title', 'text', 'user__username']               # поиск в API
 
 
     def perform_destroy(self, instance):

@@ -8,8 +8,10 @@ from django.contrib.auth import login
 
 
 class RegistrationView(View):
+    """Класс регистрации пользователя"""
 
     def get(self, request):
+        """Представление формы"""
         reg_form = RegistrationForm()
         contex = {
             'title': 'Registration',
@@ -19,11 +21,12 @@ class RegistrationView(View):
 
 
     def post(self, request):
+        """Сохранение формы"""
         reg_form = RegistrationForm(request.POST)
         if reg_form.is_valid():
             reg_form.save()
             user=reg_form.save()
-            send_email_task()
+            send_email_task()                             # sending letter
             send_mail('Welcome New User!',
                 'This is proof the task worked!',
                 str(os.getenv('EMAIL_HOST_USER')),        # Enter your email address

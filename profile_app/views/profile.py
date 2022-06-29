@@ -4,8 +4,10 @@ from profile_app.models import Profile
 
 
 class Profile_User(View):
+    """Класс профайла"""
 
     def get(self, request):
+        """Представление формы"""
         user = Profile.objects.get(user=request.user)
         contex = {
             'title': 'Profile',

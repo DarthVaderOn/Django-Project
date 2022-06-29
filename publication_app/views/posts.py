@@ -5,17 +5,20 @@ from publication_app.models import Media
 
 
 class PostCreate(View):
+    """Класс создания постов"""
 
     def get(self, request):
+        """Представление формы"""
 
-            form = AddImagePost()
-            return render(request, 'post_create_form.html', context={
-                'title': 'New Post',
-                'form': form
-            })
+        form = AddImagePost()
+        return render(request, 'post_create_form.html', context={
+            'title': 'New Post',
+            'form': form
+        })
 
 
     def post(self,request):
+        """Сохранение формы"""
 
         bound_form = AddImagePost(request.POST, request.FILES)
         files = request.FILES.getlist('image')

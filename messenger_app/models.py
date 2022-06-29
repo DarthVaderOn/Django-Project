@@ -7,6 +7,7 @@ from media_app.models import MediaFile
 
 
 class Messenger(models.Model):
+    """Модель чата"""
     text = models.CharField(max_length=256, unique=False, blank=False, null=False)
     file = models.ForeignKey(MediaFile, on_delete=models.SET_NULL, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)

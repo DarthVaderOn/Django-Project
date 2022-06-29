@@ -5,5 +5,6 @@ from ...models import Messenger
 
 
 class MessengerViewSet(GenericViewSet, ListModelMixin, CreateModelMixin, RetrieveModelMixin):
+    """Создаём класс вьюсет чата"""
     serializer_class = MessengerSerializer
     queryset = Messenger.objects.all()

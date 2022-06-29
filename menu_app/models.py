@@ -5,6 +5,7 @@ from django.db import models
 
 
 class Menu(models.Model):
+    """Модель меню"""
     menu_label = models.CharField(max_length=256, null=False, blank=False, unique=True)
 
 
@@ -13,6 +14,7 @@ class Menu(models.Model):
 
 
 class MenuItem(models.Model):
+    """Модель пунктов в меню"""
     menu = models.ForeignKey(Menu, null=False, blank=False, on_delete=models.PROTECT, related_name='links')
     title = models.CharField(max_length=32, null=False, blank=False)
     url = models.CharField(max_length=256, null=False, blank=False)
@@ -25,6 +27,7 @@ class MenuItem(models.Model):
 
 
     class Meta:
+        """Представление пунктов в меню"""
         indexes = [
             models.Index(fields=('menu',)),
             models.Index(fields=('menu', 'url')),

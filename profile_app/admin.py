@@ -11,11 +11,13 @@ admin.site.unregister(User)
 
 
 class ProfileInline(admin.StackedInline):
+    """Вывод полей профайла в админке"""
     model = Profile
 
 
 @admin.register(User)
 class UserAdmin(UserAdminBase):
+    """Вывод полей User и профайла в админке"""
     inlines = (
         ProfileInline,
     )

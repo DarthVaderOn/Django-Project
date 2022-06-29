@@ -3,6 +3,7 @@ from friendship_app.models import FriendshipRequest, FollowRequest
 
 
 class FriendshipSerializer(serializers.ModelSerializer):
+    """Создаем класс сериалайзер дружбы"""
     class Meta:
         model = FriendshipRequest
         fields = '__all__'                                # вывод всех полей
@@ -16,6 +17,7 @@ class FriendshipSerializer(serializers.ModelSerializer):
 
 
 class FollowSerializer(serializers.ModelSerializer):
+    """Создаем класс сериалайзер подписки"""
     class Meta:
         model = FollowRequest
         fields = '__all__'                                # вывод всех полей

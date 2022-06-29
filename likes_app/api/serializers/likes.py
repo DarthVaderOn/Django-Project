@@ -3,6 +3,7 @@ from likes_app.models import LikePost, LikeComment
 
 
 class LikePostSerializer(serializers.ModelSerializer):
+    """Создаем класс сериалайзер лайков постов"""
     class Meta:
         model = LikePost
         fields = '__all__'                                 # вывод всех полей
@@ -16,10 +17,11 @@ class LikePostSerializer(serializers.ModelSerializer):
 
 
 class LikeCommentSerializer(serializers.ModelSerializer):
+    """Создаем класс сериалайзер лайков комментариев"""
     class Meta:
         model = LikeComment
         fields = '__all__'
-        read_only_fields = ['user', 'comments']
+        read_only_fields = ['user', 'post']
 
 
     publisher_user = serializers.HiddenField(

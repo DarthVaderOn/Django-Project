@@ -4,6 +4,7 @@ from profile_app.models import Profile
 
 
 def user_redaction(request):
+    """Редактирование профиля пользователя"""
 
     if request.method == 'POST':
         user_form = UpdateProfileForm(instance=request.user, data=request.POST)
