@@ -10,12 +10,14 @@ class Authorization(View):
     @staticmethod
     def get(request):
         """Представление формы"""
-
-        form = LoginForm()
-        contex = {
-            'auth_form': form,
-        }
-        return render(request, 'authorization_page.html', contex)
+        if not request.user.is_authenticated:
+            form = LoginForm()
+            contex = {
+                'auth_form': form,
+            }
+            return render(request, 'authorization_page.html', contex)
+        else:
+            return redirect('main_page')
 
 
     @staticmethod

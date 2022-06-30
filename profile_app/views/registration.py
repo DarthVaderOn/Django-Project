@@ -12,12 +12,15 @@ class RegistrationView(View):
 
     def get(self, request):
         """Представление формы"""
-        reg_form = RegistrationForm()
-        contex = {
-            'title': 'Registration',
-            'reg_form': reg_form,
-        }
-        return render(request, 'registration_page.html', contex)
+        if not request.user.is_authenticated:
+            reg_form = RegistrationForm()
+            contex = {
+                'title': 'Registration',
+                'reg_form': reg_form,
+            }
+            return render(request, 'registration_page.html', contex)
+        else:
+            return redirect('main_page')
 
 
     def post(self, request):

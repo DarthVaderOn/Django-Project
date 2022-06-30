@@ -14,7 +14,7 @@ from profile_app.views.update_profile import user_redaction
 urlpatterns = [
     path('registration', RegistrationView.as_view(), name='reg_page'),
     path('authorization', Authorization.as_view(), name='auth_page'),
-    path('logout', LogoutUser.as_view(), name='logout_page'),
+    path('logout', login_required(LogoutUser.as_view()), name='logout_page'),
     path('profile/', login_required(Profile_User.as_view()), name='profile_page'),
     path('profile/update/', login_required(user_redaction), name='update_profile_page'),
     path('api/', include(api_router.urls)),
