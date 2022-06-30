@@ -7,7 +7,7 @@ class LikePostSerializer(serializers.ModelSerializer):
     class Meta:
         model = LikePost
         fields = '__all__'                                 # вывод всех полей
-        read_only_fields = ['user']
+        read_only_fields = ['user',]
 
 
     publisher_user = serializers.HiddenField(
@@ -21,7 +21,7 @@ class LikeCommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = LikeComment
         fields = '__all__'
-        read_only_fields = ['user', 'post']
+        read_only_fields = ['user',]
 
 
     publisher_user = serializers.HiddenField(
