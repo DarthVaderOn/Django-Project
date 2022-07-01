@@ -15,6 +15,8 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 import django_heroku
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -44,6 +46,24 @@ SECRET_KEY = str(os.getenv('SECRET_KEY'))
 
 DEBUG = True
 ALLOWED_HOSTS = ['*']
+
+
+# Sentry
+sentry_sdk.init(
+    dsn="https://cada8473c12349149f779dc11a0889c9@o1304180.ingest.sentry.io/6544260",
+    integrations=[
+        DjangoIntegration(),
+    ],
+
+    # Set traces_sample_rate to 1.0 to capture 100%
+    # of transactions for performance monitoring.
+    # We recommend adjusting this value in production.
+    traces_sample_rate=1.0,
+
+    # If you wish to associate users to errors (assuming you are using
+    # django.contrib.auth) you may enable sending PII data.
+    send_default_pii=True
+)
 
 
 # Standard URL Login Required
@@ -203,6 +223,8 @@ EMAIL_HOST_USER = str(os.getenv('EMAIL_HOST_USER'))           # Enter your email
 EMAIL_HOST_PASSWORD = str(os.getenv('EMAIL_HOST_PASSWORD'))   # Enter your email password
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
+
+# Heroku
 
 
 django_heroku.settings(locals())
