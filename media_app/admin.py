@@ -1,17 +1,20 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
 from media_app.models import MediaFile
+from publication_app.models import Media
 
 
 # Register your models here.
 
 
+
 @admin.register(MediaFile)
 class MessengerAdmin(admin.ModelAdmin):
     """Вывод полей медиафайлов в админке"""
+    model = Media
     list_display = ('id', 'user', 'file', 'uploaded_at', 'preview')
     ordering = ('-id',)
-    readonly_fields = ('preview', 'file', 'uploaded_at')
+    readonly_fields = ('preview', 'uploaded_at')
     search_fields = ('user__username', 'file')
 
 
