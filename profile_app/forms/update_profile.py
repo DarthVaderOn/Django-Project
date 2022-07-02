@@ -14,4 +14,4 @@ class UpdateProForm(forms.ModelForm):
     """Класс формы обновления данных Profile"""
     class Meta:
         model = Profile
-        fields = ["avatar", "phone",]
+        fields = ["avatar", "phone", "about", "github_link"]

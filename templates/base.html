@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>{% block title %}Welcome!{% endblock %}</title>
 </head>
-<body>
+<body background="https://img.wallscloud.net/converted/3523426374-Lightning-Strike-4r8V-3840x2160-MM-100.jpg" style="background-attachment: fixed">
     <div id="user_menu">{% user_menu %}</div>
     <div>Welcome {{user.first_name}} {{user.last_name}}!</div>
     <div id="main_menu">{% main_menu %}</div>
@@ -29,7 +29,7 @@
                 <div class="card-footer text-muted">{{ post.created_at|date:"d/m/Y  H:i"}}</div>
             <hr>
         {% empty %}
-        <h3> "It's time to make your news feed more colorful, subscribe to users ! </h3>
+        <h3>It's time to make your feed more colorful, create posts or follow users!</h3>
         {% endfor %}
     {% endif %}
 </body>

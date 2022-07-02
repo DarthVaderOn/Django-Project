@@ -14,5 +14,5 @@ class Profile(models.Model):
         max_length=17,
         blank=True,
     )
-    about = models.TextField(max_length=4096, blank=True, null=True)
-    github_link = models.URLField(blank=True, null=True)
+    about = models.TextField(max_length=4096, blank=True)
+    github_link = models.URLField(blank=True)

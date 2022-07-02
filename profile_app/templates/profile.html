@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>{{ title }}</title>
 </head>
-<body>
+<body background="https://img.wallscloud.net/converted/3523426374-Lightning-Strike-4r8V-3840x2160-MM-100.jpg" style="background-attachment: fixed">
 
 <div id="main_menu">{% main_menu %}</div>
 <a href="update">Edit profile</a>
@@ -12,12 +12,14 @@
             {% if avatar.avatar %}
                 <div><img src="{{ avatar.avatar.url }}" alt="" width="100px" height="100px"></div>
             {% else %}
-                <div><img src="/media/defaultavatar.jpg" alt="" width="100px" height="100px"></div>
+                <div><img src="https://cdn-icons-png.flaticon.com/512/1995/1995515.png" alt="" width="100px" height="100px"></div>
             {% endif %}
         <h2>{{ user.username }}</h2>
-        <h3>{{ user.first_name }}</h3>
         <h3>{{ user.last_name }}</h3>
+        <h3>{{ user.first_name }}</h3>
         <h3>{{ user.email }}</h3>
         <h3>{{ avatar.phone }}</h3>
+        <h3>{{ avatar.about }}</h3>
+        <h3>{{ avatar.github_link }}</h3>
 </body>
 </html>
