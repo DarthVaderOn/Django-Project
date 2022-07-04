@@ -9,12 +9,12 @@
 
     <title>{{ title }}</title>
 
-    <h2>Create post</h2>
+    <h2 style="color:#FFFFFF">Create post</h2>
 
     {% endblock %}
 
     {% block content %}
-        <form class="" action="{% url 'post_page' %}" method="post" enctype="multipart/form-data">
+        <form class="" action="{% url 'post_page' %}" method="post" enctype="multipart/form-data" style="color:#FFFFFF">
 
         {% if error %}
             <h4 style="color:blue ">{{ error }}</h4>

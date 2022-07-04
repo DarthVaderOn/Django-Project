@@ -10,11 +10,11 @@
         {% main_menu %}
   </div>
 
-    <h1>Editing profile data {{ user.username }}</h1>
+    <h1 style="color:#FFFFFF">Editing profile data {{ user.username }}</h1>
 
-    <p>Your data:</p>
+    <p style="color:#FFFFFF">Your data:</p>
 
-  <form method="post" enctype="multipart/form-data">
+  <form method="post" enctype="multipart/form-data" style="color:#FFFFFF">
     {{ user_form.as_p }}
     {{ profile_form.as_p }}
     {% if user.avatar %}

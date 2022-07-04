@@ -15,7 +15,7 @@
         {% user_menu %}
     </div>
 
-    <div>
+    <div style="color:#FFFFFF">
         Welcome {{user.first_name}} {{user.last_name}}!
     </div>
 
@@ -23,7 +23,7 @@
         {% main_menu %}
     </div>
 
-<h3>Most Wanted Tags:</h3>
+<h3 style="color:#FFFFFF">Most Wanted Tags:</h3>
 
     <div class="row">
         {% for item in tag %}
@@ -32,19 +32,19 @@
     </div>
 
         {% if error %}
-            <h3>{{ error }}</h3>
+            <h3 style="color:#FFFFFF">{{ error }}</h3>
         {% else %}
 
         {% for post in posts %}
-             <h4 >tag: <a href="{% url 'get_tags' post.tag.pk %}">{{ post.tag }}</a></h4>
+             <h4 style="color:#FFFFFF">tag: <a href="{% url 'get_tags' post.tag.pk %}">{{ post.tag }}</a></h4>
 
             <div class="card-body">
-                <h3 class="card-title {% cycle 'text-danger' 'text-success'%}">{{ post.title }}</h3>
+                <h3 class="card-title {% cycle 'text-danger' 'text-success'%}" style="color:#FFFFFF">{{ post.title }}</h3>
             <div>
 
         {% for image in image_post %}
         {% if image.post == post %}
-            <a href="{{image.image_post.url}}">
+            <a href="{{image.image_post.url}}" >
         {% if image.image_post %}
             <img src="{{ image.image_post.url }}" target="_blank" alt="" width="800px" height="600px">
         {% endif %}
@@ -54,14 +54,14 @@
     </div>
 
     </div>
-        <p class="card-text">{{ post.text }}</p>
-    <div class="card-footer text-muted">
+        <p class="card-text" style="color:#FFFFFF">{{ post.text }}</p>
+    <div class="card-footer text-muted" style="color:#FFFFFF">
         {{ post.created_at|date:"d/m/Y  H:i"}}
     </div>
 
 <hr>
         {% empty %}
-            <h3>It's time to make your feed more colorful, create posts or follow users!</h3>
+            <h3 style="color:#FFFFFF">It's time to make your feed more colorful, create posts or follow users!</h3>
 
     {% endfor %}
     {% endif %}

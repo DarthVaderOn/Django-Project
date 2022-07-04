@@ -12,7 +12,7 @@
 
     <a href="update">Edit profile</a>
 
-    <h1>Your profile</h1>
+    <h1 style="color:#FFFFFF">Your profile {{ user.username }}</h1>
 
     {% if avatar.avatar %}
 
@@ -28,13 +28,18 @@
 
     {% endif %}
 
-    <h2>{{ user.username }}</h2>
-    <h3>{{ user.last_name }}</h3>
-    <h3>{{ user.first_name }}</h3>
-    <h3>{{ user.email }}</h3>
-    <h3>{{ avatar.phone }}</h3>
-    <h3>{{ avatar.about }}</h3>
-    <h3>{{ avatar.github_link }}</h3>
+    <h3 style="color:#7FFF00"><b>Last Name:</b> <i style="color:#FFFFFF">{{ user.last_name }}</i></h3>
+<hr>
+    <h3 style="color:#7FFF00"><b>First Name:</b> <i style="color:#FFFFFF">{{ user.first_name }}</i></h3>
+<hr>
+    <h3 style="color:#7FFF00"><b>Email:</b> <i style="color:#FFFFFF">{{ user.email }}</i></h3>
+<hr>
+    <h3 style="color:#7FFF00"><b>Phone Number:</b> <i style="color:#FFFFFF">{{ avatar.phone }}</i></h3>
+<hr>
+    <h3 style="color:#7FFF00"><b>Information About You:</b> <i style="color:#FFFFFF">{{ avatar.about }}</i></h3>
+<hr>
+    <h3 style="color:#7FFF00"><ins>Link To GitHub Account:</ins> <a href="{{ avatar.github_link }}" target="_blank">{{ avatar.github_link }}</a></h3>
+<hr>
 
   </body>
 </html>

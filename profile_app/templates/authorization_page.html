@@ -13,7 +13,7 @@
     </div>
 
     {% endif %}
-    <form method="post" action="/authorization">
+    <form method="post" action="/authorization" style="color:#FFFFFF">
           {% csrf_token %}
           {{ auth_form }}
           <input type="submit" value="Sign in">
