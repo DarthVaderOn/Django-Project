@@ -27,7 +27,7 @@ class MenuItemAdmin(admin.StackedInline):
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
-    """Вывод поста с изображениями"""
+    """Вывод постов с изображениями"""
     inlines = (
         MenuItemAdmin,
     )

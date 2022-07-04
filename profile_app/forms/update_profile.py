@@ -3,7 +3,7 @@ from django import forms
 from profile_app.models import Profile
 
 
-class UpdateProfileForm(forms.ModelForm):
+class UpdateUserForm(forms.ModelForm):
     """Класс формы обновления данных User"""
     class Meta:
         model = User

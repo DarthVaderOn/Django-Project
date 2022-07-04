@@ -224,6 +224,7 @@ EMAIL_HOST_PASSWORD = str(os.getenv('EMAIL_HOST_PASSWORD'))   # Enter your email
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
 
+
 # Heroku
 
 
