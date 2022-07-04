@@ -24,20 +24,23 @@ class MyPosts(View):
 
         if user_id:
 
-                posts = Post.objects.filter(is_public=True).filter(user_id__in=user_post).all()
+            posts = Post.objects.filter(is_public=True).filter(user_id__in=user_post).all()
+
+            if posts:
+
                 tag = Tag.objects.annotate(count=Count("post")).order_by("-count")[:5]
                 image_post = Media.objects.all()
-                if posts:
-                    contex = {'title': 'My Posts!',
-                              'posts': posts,
-                              'image_post': image_post,
-                              'tag': tag,
-                              }
-                else: contex = {'title': 'My Posts!',
-                      }
-        else:
-            contex = {'title': 'My Posts!',
-                      }
+
+                contex = {'title': 'My Posts!',
+                          'posts': posts,
+                          'image_post': image_post,
+                          'tag': tag,
+                          }
+            else:
+                contex = {'title': 'My Posts!',
+                          'error': "You don't have any posts yet. Create your first post."
+                          }
+
         return render(request, 'my_posts.html', contex)
 
 

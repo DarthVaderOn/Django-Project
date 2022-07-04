@@ -8,12 +8,14 @@
     <div id="user_menu">{% user_menu %}</div>
     <div>Welcome {{user.first_name}} {{user.last_name}}!</div>
     <div id="main_menu">{% main_menu %}</div>
-        {% if user.is_authenticated %}
         <h3>Most Wanted Tags:</h3>
         <div class="row">
         {% for item in tag %}
         <a href="/tag/{{ item.pk }}" class="list-group-item list-group-item-action">{{ item.title }}<span class="badge badge-primary badge-pill"> [{{ item.count }}]</span></a>
         {% endfor %}</div>
+            {% if error %}
+            <h3>{{ error }}</h3>
+            {% else %}
                 {% for post in posts %}
                 <h4 >tag: <a href="{% url 'get_tags' post.tag.pk %}">{{ post.tag }}</a></h4>
                     <div class="card-body">
@@ -28,8 +30,6 @@
                 <p class="card-text">{{ post.text }}</p>
                 <div class="card-footer text-muted">{{ post.created_at|date:"d/m/Y  H:i"}}</div>
             <hr>
-        {% empty %}
-        <h3>It's time to make your feed more colorful, create posts or follow users!</h3>
         {% endfor %}
     {% endif %}
 </body>

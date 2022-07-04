@@ -24,18 +24,26 @@ class MainPageView(View):
 
         if subscriber:
 
-                posts = Post.objects.filter(is_public=True).filter(user_id__in=users_follow).all()
+            posts = Post.objects.filter(is_public=True).filter(user_id__in=users_follow).all()
+
+            if posts:
+
                 tag = Tag.objects.annotate(count=Count("post")).order_by("-count")[:5]
                 image_post = Media.objects.all()
-                if posts:
-                    contex = {'title': 'Hello World!',
-                              'posts': posts,
-                              'image_post': image_post,
-                              'tag': tag,
-                              }
+                contex = {'title': 'Hello World!',
+                          'posts': posts,
+                          'image_post': image_post,
+                          'tag': tag,
+                          }
+            else:
+                contex = {'title': 'Hello World!',
+                          'error': "The users you follow have no posts.",
+                          }
         else:
             contex = {'title': 'Hello World!',
+                      'error': "It's time to make your feed colorful, subscribe to users!",
                       }
+
         return render(request, 'main_page.html', contex)
 
 
