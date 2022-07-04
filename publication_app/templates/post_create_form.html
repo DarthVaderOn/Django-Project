@@ -1,28 +1,42 @@
-<body background="https://img.wallscloud.net/converted/3523426374-Lightning-Strike-4r8V-3840x2160-MM-100.jpg" style="background-attachment: fixed">
-{% load menu_tags %}
-    <div id="main_menu">{% main_menu %}</div>
-{% block title %}
-<title>{{ title }}</title>
+  <body background="https://img.wallscloud.net/converted/3523426374-Lightning-Strike-4r8V-3840x2160-MM-100.jpg" style="background-attachment: fixed">
+    {% load menu_tags %}
+
+    <div id="main_menu">
+        {% main_menu %}
+    </div>
+
+    {% block title %}
+
+    <title>{{ title }}</title>
+
     <h2>Create post</h2>
-{% endblock %}
-{% block content %}
-    <form class="" action="{% url 'post_page' %}" method="post" enctype="multipart/form-data">
+
+    {% endblock %}
+
+    {% block content %}
+        <form class="" action="{% url 'post_page' %}" method="post" enctype="multipart/form-data">
+
         {% if error %}
-        <h4 style="color:blue ">{{ error }}</h4>
+            <h4 style="color:blue ">{{ error }}</h4>
         {% endif %}
+
         {% csrf_token %}
-            {% for field in form %}
-                <div class="form-group">
-                    {% if field.errors %}
-                        <div class="alert alert-danger">
-                        {{ field.errors }}
-                        </div>
-                    {% endif %}
+
+        {% for field in form %}
+
+        <div class="form-group">
+            {% if field.errors %}
+            <div class="alert alert-danger">
+                {{ field.errors }}
+            </div>
+                {% endif %}
                 {{ field.label }}
                 {{ field }}
-            </div>
-        {% endfor %}
+        </div>
+
+            {% endfor %}
+
         <button type="submit" name="button">Post</button>
-    </form>
-{% endblock %}
-</body>
+        </form>
+        {% endblock %}
+  </body>

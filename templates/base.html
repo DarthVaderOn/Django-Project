@@ -1,36 +1,69 @@
-{% load menu_tags %}
+    {% load menu_tags %}
 <html lang="en">
-<head>
+
+  <head>
+
     <meta charset="UTF-8">
+
     <title>{% block title %}Welcome!{% endblock %}</title>
-</head>
-<body background="https://img.wallscloud.net/converted/3523426374-Lightning-Strike-4r8V-3840x2160-MM-100.jpg" style="background-attachment: fixed">
-    <div id="user_menu">{% user_menu %}</div>
-    <div>Welcome {{user.first_name}} {{user.last_name}}!</div>
-    <div id="main_menu">{% main_menu %}</div>
-        <h3>Most Wanted Tags:</h3>
-        <div class="row">
+
+  </head>
+
+  <body background="https://img.wallscloud.net/converted/3523426374-Lightning-Strike-4r8V-3840x2160-MM-100.jpg" style="background-attachment: fixed">
+
+    <div id="user_menu">
+        {% user_menu %}
+    </div>
+
+    <div>
+        Welcome {{user.first_name}} {{user.last_name}}!
+    </div>
+
+    <div id="main_menu">
+        {% main_menu %}
+    </div>
+
+<h3>Most Wanted Tags:</h3>
+
+    <div class="row">
         {% for item in tag %}
-        <a href="/tag/{{ item.pk }}" class="list-group-item list-group-item-action">{{ item.title }}<span class="badge badge-primary badge-pill"> [{{ item.count }}]</span></a>
-        {% endfor %}</div>
-            {% if error %}
-            <h3>{{ error }}</h3>
-            {% else %}
-                {% for post in posts %}
-                <h4 >tag: <a href="{% url 'get_tags' post.tag.pk %}">{{ post.tag }}</a></h4>
-                    <div class="card-body">
-                    <h3 class="card-title {% cycle 'text-danger' 'text-success'%}">{{ post.title }}</h3>
-                        <div>{% for image in image_post %}
-                        {% if image.post == post %}<a href="{{image.image_post.url}}">
-                        {% if image.image_post %}<img src="{{ image.image_post.url }}" target="_blank" alt="" width="800px" height="600px">
-                        {% endif %}
-                        {% endif %}
-                        {% endfor %}</a></div>
-                    </div>
-                <p class="card-text">{{ post.text }}</p>
-                <div class="card-footer text-muted">{{ post.created_at|date:"d/m/Y  H:i"}}</div>
-            <hr>
+            <a href="/tag/{{ item.pk }}" class="list-group-item list-group-item-action">{{ item.title }}<span class="badge badge-primary badge-pill"> [{{ item.count }}]</span></a>
         {% endfor %}
+    </div>
+
+        {% if error %}
+            <h3>{{ error }}</h3>
+        {% else %}
+
+        {% for post in posts %}
+             <h4 >tag: <a href="{% url 'get_tags' post.tag.pk %}">{{ post.tag }}</a></h4>
+
+            <div class="card-body">
+                <h3 class="card-title {% cycle 'text-danger' 'text-success'%}">{{ post.title }}</h3>
+            <div>
+
+        {% for image in image_post %}
+        {% if image.post == post %}
+            <a href="{{image.image_post.url}}">
+        {% if image.image_post %}
+            <img src="{{ image.image_post.url }}" target="_blank" alt="" width="800px" height="600px">
+        {% endif %}
+        {% endif %}
+        {% endfor %}
+            </a>
+    </div>
+
+    </div>
+        <p class="card-text">{{ post.text }}</p>
+    <div class="card-footer text-muted">
+        {{ post.created_at|date:"d/m/Y  H:i"}}
+    </div>
+
+<hr>
+        {% empty %}
+            <h3>It's time to make your feed more colorful, create posts or follow users!</h3>
+
+    {% endfor %}
     {% endif %}
-</body>
+  </body>
 </html>

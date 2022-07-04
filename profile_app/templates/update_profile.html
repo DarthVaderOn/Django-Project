@@ -1,19 +1,31 @@
 {% load menu_tags %}
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <title>Edit profile</title>
-</head>
-<body background="https://img.wallscloud.net/converted/3523426374-Lightning-Strike-4r8V-3840x2160-MM-100.jpg" style="background-attachment: fixed">
-    <div id="main_menu">{% main_menu %}</div>
+  </head>
+  <body background="https://img.wallscloud.net/converted/3523426374-Lightning-Strike-4r8V-3840x2160-MM-100.jpg" style="background-attachment: fixed">
+
+  <div id="main_menu">
+        {% main_menu %}
+  </div>
+
     <h1>Editing profile data {{ user.username }}</h1>
-        <p>Your data:</p>
-        <form method="post" enctype="multipart/form-data">
-            {{ user_form.as_p }}
-            {{ profile_form.as_p }}
-            {% if user.avatar %}<div><img src="{{ user.avatar.url }}" alt="" width="100px" height="100px"></div>{% endif %}
-            {% csrf_token %}
-            <p><input type="submit" value="Save"></p>
-        </form>
-</body>
+
+    <p>Your data:</p>
+
+  <form method="post" enctype="multipart/form-data">
+    {{ user_form.as_p }}
+    {{ profile_form.as_p }}
+    {% if user.avatar %}
+
+  <div>
+      <img src="{{ user.avatar.url }}" alt="" width="100px" height="100px">
+  </div>{% endif %}
+
+    {% csrf_token %}
+
+    <p><input type="submit" value="Save"></p>
+  </form>
+  </body>
 </html>
