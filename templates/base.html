@@ -25,9 +25,9 @@
 
 <h3 style="color:#FFFFFF">Most Wanted Tags:</h3>
 
-    <div class="row">
+    <div class="row" >
         {% for item in tag %}
-            <a href="/tag/{{ item.pk }}" class="list-group-item list-group-item-action">{{ item.title }}<span class="badge badge-primary badge-pill"> [{{ item.count }}]</span></a>
+            <a href="/tag/{{ item.pk }}" class="list-group-item list-group-item-action" style="color: #00CED1">{{ item.title }}<span class="badge badge-primary badge-pill" > [{{ item.count }}]</span></a>
         {% endfor %}
     </div>
 
@@ -36,11 +36,11 @@
         {% else %}
 
         {% for post in posts %}
-             <h4 style="color:#FFFFFF">tag: <a href="{% url 'get_tags' post.tag.pk %}">{{ post.tag }}</a></h4>
+             <h4 style="color:#FFFFFF">tag: <a href="{% url 'get_tags' post.tag.pk %}" style="color: #00CED1">{{ post.tag }}</a></h4>
 
-            <div class="card-body">
-                <h3 class="card-title {% cycle 'text-danger' 'text-success'%}" style="color:#FFFFFF">{{ post.title }}</h3>
-            <div>
+    <div class="card-body">
+             <h3 class="card-title {% cycle 'text-danger' 'text-success'%}" style="color:#FFFFFF">{{ post.title }}</h3>
+    <div>
 
         {% for image in image_post %}
         {% if image.post == post %}
@@ -54,7 +54,8 @@
     </div>
 
     </div>
-        <p class="card-text" style="color:#FFFFFF">{{ post.text }}</p>
+        <p class="card-text" style="color:#FFFFFF" >{{ post.text }}</p>
+        <h3 class="text-bold" style="color:#FF8C00"> <b>{{ post.user }}</b> </h3>
     <div class="card-footer text-muted" style="color:#FFFFFF">
         {{ post.created_at|date:"d/m/Y  H:i"}}
     </div>
@@ -62,7 +63,6 @@
 <hr>
         {% empty %}
             <h3 style="color:#FFFFFF">It's time to make your feed more colorful, create posts or follow users!</h3>
-
     {% endfor %}
     {% endif %}
   </body>
