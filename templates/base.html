@@ -27,7 +27,7 @@
 
     <div class="row" >
         {% for item in tag %}
-            <a href="/tag/{{ item.pk }}" class="list-group-item list-group-item-action" style="color: #00CED1">{{ item.title }}<span class="badge badge-primary badge-pill" > [{{ item.count }}]</span></a>
+            <a href="/tag/{{ item.title }}" class="list-group-item list-group-item-action" style="color: #00CED1">{{ item.title }}<span class="badge badge-primary badge-pill" > [{{ item.count }}]</span></a>
         {% endfor %}
     </div>
 

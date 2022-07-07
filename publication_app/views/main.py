@@ -47,13 +47,13 @@ class MainPageView(View):
         return render(request, 'main_page.html', contex)
 
 
-    def get_tags(request, tag_id):
+    def get_tags(request, title):
         """Представление тегов"""
 
-        posts = Post.objects.filter(tag_id=tag_id).order_by('-id').all()
+        posts = Post.objects.filter(tag__title=title).order_by('-id').all()
         tag = Tag.objects.annotate(count=Count("post")).order_by("-count")[:5]
         image_post = Media.objects.all()
-        tags = Tag.objects.get(pk=tag_id)
+        tags = Tag.objects.get(title=title)
         return render(request, 'tag.html', {
             'title': 'Categories',
             'posts': posts,
