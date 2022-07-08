@@ -36,7 +36,7 @@ class PostCreate(View):
             post_object.save()
             for f in files:
                 Media.objects.create(post=post_object,image_post=f)
-            return redirect('main_page')
+            return redirect('my_post')
         return render(request, 'main_page.html', context={
             'title': 'New Post',
             'form': bound_form
