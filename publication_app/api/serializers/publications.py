@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from media_app.api.serializers.media import MediaFileSerializer
+from profile_app.api.serializers.user import UserSerializer
 from publication_app.models import Post
-from tags_app.api.serializers.tags import TagSerializer
 
 
 class PostSerializer(serializers.ModelSerializer):
@@ -9,7 +9,7 @@ class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
         exclude = ['is_public']
-        read_only_fields = ('id', 'user', 'is_public',)
+        read_only_fields = ('id', 'user', 'is_public')
         extra_kwargs = {
             'file': {
                     'required': True,
@@ -28,10 +28,9 @@ class PostSerializer(serializers.ModelSerializer):
     # media = serializers.URLField(source='file.file.url', read_only=True)
     # media_uploaded_at = serializers.DateTimeField(source='file.uploaded_at', allow_null=True, read_only=True)
     media = MediaFileSerializer(source='file', allow_null=False, read_only=True)
-    tag = TagSerializer(read_only=True)
     likes_count = serializers.SerializerMethodField()
     comments_count = serializers.SerializerMethodField()
-    likes_comment_count = serializers.SerializerMethodField()
+    user = UserSerializer(read_only=True)
 
 
     def get_likes_count(self, instance) -> int:
@@ -42,8 +41,3 @@ class PostSerializer(serializers.ModelSerializer):
     def get_comments_count(self, instance) -> int:
         """Отображаем общее количество комментариев к посту"""
         return instance.comments.count()
-
-
-    def get_likes_comment_count(self, instance) -> int:
-        """Отображаем общее количество лайков комментариев"""
-        return instance.likes_comment.count()

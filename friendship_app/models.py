@@ -18,6 +18,11 @@ class FriendshipRequest(models.Model):
         return f"User #{self.user_id} and user #{self.user_invite_id} friendship requested: {self.friendship_result}"
 
 
+    class Meta:
+        """Создаём уникальные поля"""
+        unique_together = (('user', 'user_invite'),)
+
+
 class FollowRequest(models.Model):
     """Модель подписки"""
     user = models.ForeignKey(User,on_delete=models.CASCADE, related_name='follow_request')
@@ -28,3 +33,8 @@ class FollowRequest(models.Model):
     def __str__(self):
         """Информационная строка кто на кого подписан"""
         return f"User #{self.user_id} follows #{self.user_follow_id}"
+
+
+    class Meta:
+        """Создаём уникальные поля"""
+        unique_together = (('user', 'user_follow'),)

@@ -4,10 +4,10 @@ from messenger_app.models import Messenger
 
 
 class MessengerSerializer(serializers.ModelSerializer):
-    """Создаем класс сериалайзер чата"""
+    """Создаем класс сериалайзер мессенджера"""
     class Meta:
         model = Messenger
-        exclude = ['id']
+        fields = '__all__'
         read_only_fields = ('id', 'sender', 'created_at',)
         extra_kwargs = {
             'file': {

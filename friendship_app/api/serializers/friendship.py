@@ -7,7 +7,7 @@ class FriendshipSerializer(serializers.ModelSerializer):
     class Meta:
         model = FriendshipRequest
         fields = '__all__'                                # вывод всех полей
-        read_only_fields = ['user']
+        read_only_fields = ['user', 'friendship_result',]
 
 
     publisher_user = serializers.HiddenField(

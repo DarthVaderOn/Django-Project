@@ -19,10 +19,9 @@ class LikePost(models.Model):
 
 class LikeComment(models.Model):
     """Модель лайков комментариев"""
-    post = models.ForeignKey(Post, on_delete=models.CASCADE, null=False, blank=False, related_name='likes_comment')
     comment = models.ForeignKey(Comments, on_delete=models.CASCADE, null=False, blank=False, related_name='likes_comment')
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank=False, related_name='likes_comment')
 
     class Meta:
         """Создаём уникальные поля"""
-        unique_together = (('post', 'comment', 'user'),)
+        unique_together = (('comment', 'user'),)

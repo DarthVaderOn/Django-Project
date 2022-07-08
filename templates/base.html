@@ -36,7 +36,7 @@
         {% else %}
 
         {% for post in posts %}
-             <h4 style="color:#FFFFFF">tag: <a href="{% url 'get_tags' post.tag.pk %}" style="color: #00CED1">{{ post.tag }}</a></h4>
+             <h4 style="color:#FFFFFF">tag: <a href="{% url 'get_tags' post.tag.title %}" style="color: #00CED1">{{ post.tag.title }}</a></h4>
 
     <div class="card-body">
              <h3 class="card-title {% cycle 'text-danger' 'text-success'%}" style="color:#FFFFFF">{{ post.title }}</h3>
