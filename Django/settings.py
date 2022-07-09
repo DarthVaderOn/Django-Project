@@ -97,7 +97,9 @@ INSTALLED_APPS = [
     'tags_app',
     'drf_spectacular',
     'rest_framework',
+    'debug_toolbar',
 ]
+
 
 # AUTH_USER_MODEL = 'publication_app.User'
 
@@ -110,7 +112,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
+
 
 ROOT_URLCONF = 'Django.urls'
 
@@ -225,7 +229,16 @@ EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
 
 
+# Django Debug Toolbar
+
+
+INTERNAL_IPS = [
+            '127.0.0.1',
+        ]
+
+
 # Heroku
 
 
 django_heroku.settings(locals())
+
