@@ -1,4 +1,4 @@
-from rest_framework import filters
+from rest_framework import filters, permissions
 from rest_framework.mixins import ListModelMixin, RetrieveModelMixin
 from rest_framework.viewsets import GenericViewSet
 from ..serializers.tags import TagSerializer
@@ -10,4 +10,5 @@ class TagViewSet(GenericViewSet, ListModelMixin, RetrieveModelMixin):
     serializer_class = TagSerializer
     queryset = Tag.objects.all()
     filter_backends = [filters.OrderingFilter]
+    permission_classes = [permissions.IsAuthenticated]                       # просмотр тегов только для авторизованного пользователя
     ordering_fields = '__all__'
