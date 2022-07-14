@@ -1,4 +1,4 @@
-from django.contrib.auth.models import User
+from user_app.models import User
 from django.db.models import Count
 from django.shortcuts import render
 from django.views import View

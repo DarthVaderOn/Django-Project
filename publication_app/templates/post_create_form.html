@@ -17,7 +17,7 @@
         <form class="" action="{% url 'post_page' %}" method="post" enctype="multipart/form-data" style="color:#FFFFFF">
 
         {% if error %}
-            <h4 style="color:blue ">{{ error }}</h4>
+            <h4 style="color:#DC143C">{{ error }}</h4>
         {% endif %}
 
         {% csrf_token %}

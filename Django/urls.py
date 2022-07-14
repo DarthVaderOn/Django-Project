@@ -36,6 +36,7 @@ urlpatterns = [
     path('', include('profile_app.urls')),
     path('', include('publication_app.urls')),
     path('', include('tags_app.urls')),
+    path('', include('user_app.urls')),
     path('__debug__/', include('debug_toolbar.urls')),
     path('sentry-debug/', trigger_error),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),

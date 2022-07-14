@@ -1,7 +1,7 @@
 from django.db import models
 from comments_app.models import Comments
 from publication_app.models import Post
-from profile_app.models import User
+from user_app.models import User
 
 
 # Create your models here.

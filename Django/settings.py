@@ -96,14 +96,12 @@ INSTALLED_APPS = [
     'profile_app',
     'publication_app',
     'tags_app',
+    'user_app',
     'drf_spectacular',
     'rest_framework',
     'debug_toolbar',
     'rest_framework_simplejwt',
 ]
-
-
-# AUTH_USER_MODEL = 'publication_app.User'
 
 
 MIDDLEWARE = [
@@ -155,6 +153,13 @@ DATABASES = {
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
+
+
+# Django allows you to override the default user model by providing a value for the
+# AUTH_USER_MODEL setting that references a custom model:
+
+
+AUTH_USER_MODEL = 'user_app.User'
 
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -284,4 +289,3 @@ SIMPLE_JWT = {
 
 
 django_heroku.settings(locals())
-

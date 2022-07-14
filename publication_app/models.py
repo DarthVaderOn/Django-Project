@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from user_app.models import User
 from media_app.models import MediaFile
 from tags_app.models import Tag
 
