@@ -6,8 +6,6 @@ from django.contrib.auth.admin import UserAdmin as UserAdminBase
 
 # Register your models here.
 
-#admin.site.unregister(User)
-
 
 class ProfileInline(admin.StackedInline):
     """Вывод полей профайла в админке"""
@@ -16,7 +14,7 @@ class ProfileInline(admin.StackedInline):
 
 @admin.register(User)
 class UserAdmin(UserAdminBase):
-    """Вывод полей User и профайла в админке"""
+    """Вывод User (и Profile) в админке"""
     inlines = (
         ProfileInline,
     )
