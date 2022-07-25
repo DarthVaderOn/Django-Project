@@ -1,24 +1,17 @@
-from user_app.models import User
 from django import forms
+from django.contrib.auth.forms import UserCreationForm
+from user_app.models import User
 
 
-class RegistrationForm(forms.ModelForm):
+class RegistrationForm(UserCreationForm):
     """Класс формы регистрации пользователя"""
 
+    username = forms.CharField()
     email = forms.EmailInput()
-    password = forms.CharField(widget=forms.PasswordInput())
+    password1 = forms.CharField(widget=forms.PasswordInput(), label='Enter password')
+    password2 = forms.CharField(widget=forms.PasswordInput(), label='Repeat password')
 
     class Meta:
         """Вывод полей при регистрации"""
         model = User
-        fields = ('username', 'email', 'password',)
-
-
-    def save(self, commit=True):
-        """Сохраняем нового пользователя и хешируем пароль"""
-        user = super(RegistrationForm, self).save(commit=False)
-        user.set_password(self.cleaned_data['password'])
-
-        if commit:
-            user.save()
-        return user
+        fields = ('username', 'email', 'password1', 'password2')

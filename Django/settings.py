@@ -101,6 +101,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'debug_toolbar',
     'rest_framework_simplejwt',
+    'django_celery_beat',
 ]
 
 

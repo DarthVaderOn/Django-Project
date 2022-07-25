@@ -31,7 +31,7 @@ class RegistrationView(View):
             user=reg_form.save()
             send_email_task()                             # sending letter
             send_mail('Welcome New User!',
-                'This is proof the task worked!',
+                'We are glad that you are with us!',
                 str(os.getenv('EMAIL_HOST_USER')),        # Enter your email address
                 [user.email])                             # Enter them email address
             login(request, user)
